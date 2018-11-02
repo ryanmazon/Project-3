@@ -69,13 +69,16 @@ public class Pakudex
     }
     public void sortPakuri()
     {
-        //how do i sort an array of objects
-        String[] sortingArray = getSpeciesArray();
-        Arrays.sort(sortingArray);
-        for (int i = 1; i < sortingArray.length; i++)
+        for (int i = 1; i < pakudexArray.length; i++)
         {
+            if (pakudexArray[i] != null)
             {
-
+                if (pakudexArray[i - 1].getSpecies().compareTo(pakudexArray[i].getSpecies()) > 0)
+                {
+                    Pakuri placeholder = pakudexArray[i - 1];
+                    pakudexArray[i] = pakudexArray[i - 1];
+                    pakudexArray[i - 1] = placeholder;
+                }
             }
         }
     }
