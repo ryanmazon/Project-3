@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Comparator;
+
 public class Pakudex
 {
     public Pakuri[] pakudexArray;
@@ -69,7 +71,15 @@ public class Pakudex
     }
     public void sortPakuri()
     {
-        for (int i = 1; i < pakudexArray.length; i++)
+        //how can I sort the pakudexArray using comparator without having nullPointerException errors?
+        Arrays.sort(pakudexArray, new Comparator<Pakuri>() {
+            @Override
+            public int compare(Pakuri o1, Pakuri o2)
+            {
+                return o1.getSpecies().compareTo(o2.getSpecies());
+            }
+        });
+    /*for (int i = 1; i < pakudexArray.length; i++)
         {
             if (pakudexArray[i] != null)
             {
@@ -80,8 +90,9 @@ public class Pakudex
                     pakudexArray[i - 1] = placeholder;
                 }
             }
-        }
+        }*/
     }
+
     public boolean addPakuri(String species)
     {
         try{

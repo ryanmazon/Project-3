@@ -1,4 +1,4 @@
-public class Pakuri
+public class Pakuri implements Comparable<Pakuri>
 {
     private String species;
     private int attack;
@@ -32,6 +32,13 @@ public class Pakuri
     {
         this.attack = newAttack;
     }
+
+    @Override
+    public int compareTo(Pakuri x)
+    {
+        return getSpecies().compareTo(x.getSpecies());
+    }
+
     public void evolve()
     {
         this.attack *= 2;
